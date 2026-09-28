@@ -1,0 +1,19 @@
+{
+  "$schema": "https://githubusercontent.com",
+  "name": "shelby-extended-ae",
+  "version-string": "1.1.7",
+  "dependencies": [
+    "directxmath",
+    "directxtk",
+    "fmt",
+    "nlohmann-json",
+    "rapidcsv",
+    "catch2",
+    "simpleini",
+    "spdlog",
+    "toml11",
+    "xbyak",
+    "fast-cpp-csv-parser",
+    "rsm-binary-io"
+  ]
+}

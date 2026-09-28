@@ -1,16 +1,7 @@
-//
-// Created by toms3 on 2026-09-27.
-//
+#pragma once
+#include "PCH.h"
 
-#ifndef SHELBYPAPYRUSAE_ONPLAYERWEREWOLFFEEDING_H
-#define SHELBYPAPYRUSAE_ONPLAYERWEREWOLFFEEDING_H
-
-
-
-class OnPlayerWerewolfFeeding {
-
-};
-
-
-
-#endif //SHELBYPAPYRUSAE_ONPLAYERWEREWOLFFEEDING_H
+namespace OnPlayerWerewolfFeeding {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+    void RegisterEvents();
+}

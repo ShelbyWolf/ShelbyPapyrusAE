@@ -1,16 +1,6 @@
-//
-// Created by toms3 on 2026-09-27.
-//
+#pragma once
 
-#ifndef SHELBYPAPYRUSAE_ONACTORRACESWITCHED_H
-#define SHELBYPAPYRUSAE_ONACTORRACESWITCHED_H
-
-
-
-class OnActorRaceSwitched {
-
-};
-
-
-
-#endif //SHELBYPAPYRUSAE_ONACTORRACESWITCHED_H
+namespace OnActorRaceSwitched {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+    void RegisterEvents();
+}

@@ -1,16 +1,6 @@
-//
-// Created by toms3 on 2026-09-25.
-//
+#pragma once
+#include "PCH.h"
 
-#ifndef SHELBYPAPYRUSAE_WEATHERPLUS_H
-#define SHELBYPAPYRUSAE_WEATHERPLUS_H
-
-
-
-class WeatherPlus {
-
-};
-
-
-
-#endif //SHELBYPAPYRUSAE_WEATHERPLUS_H
+namespace WeatherPlus {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+}

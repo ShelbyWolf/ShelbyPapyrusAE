@@ -1,16 +1,7 @@
-//
-// Created by toms3 on 2026-09-27.
-//
+#pragma once
+#include "PCH.h"
 
-#ifndef SHELBYPAPYRUSAE_ONPLAYERLOCKPICK_H
-#define SHELBYPAPYRUSAE_ONPLAYERLOCKPICK_H
-
-
-
-class OnPlayerLockpick {
-
-};
-
-
-
-#endif //SHELBYPAPYRUSAE_ONPLAYERLOCKPICK_H
+namespace OnPlayerLockpick {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+    void RegisterEvents();
+}

@@ -1,13 +1,7 @@
-//
-// Created by toms3 on 2026-09-26.
-//
+#pragma once
+#include "PCH.h"
 
-#ifndef SHELBYPAPYRUSAE_ONBLEEDOUTTRACKER_H
-#define SHELBYPAPYRUSAE_ONBLEEDOUTTRACKER_H
-
-
-class OnActorBleedout {
-};
-
-
-#endif //SHELBYPAPYRUSAE_ONBLEEDOUTTRACKER_H
+namespace OnActorBleedout {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+    void RegisterEvents();
+}

@@ -1,19 +1,17 @@
 #pragma once
 
 // Centralized names for every Papyrus script, native function and event.
-// Order: scripts -> functions (by script, mirroring the .psc) -> events (player, then actor; A-Z)
-namespace EventNames {
+namespace PapyrusNames {
 
-    // ============================================================
     //  PAPYRUS SCRIPTS
-    // ============================================================
+
     static const char* PapyrusActorScript   = "ShelbyExtendedActor";
     static const char* PapyrusQuestScript   = "ShelbyExtendedQuests";
     static const char* PapyrusWeatherScript = "ShelbyExtendedWeather";
+    static const char* PapyrusSystemScript = "ShelbyExtendedMisc";
 
-    // ============================================================
     //  FUNCTIONS - ShelbyExtendedActor
-    // ============================================================
+
     // --- State checks ---
     static const char* fActorFemale         = "IsActorFemale";
     static const char* fActorWerewolf       = "IsActorWerewolf";
@@ -33,9 +31,8 @@ namespace EventNames {
     static const char* fActorInvItemCount   = "GetActorInventoryItemCount";
     static const char* fActorInvGoldValue   = "GetActorInventoryGoldValue";
 
-    // ============================================================
     //  FUNCTIONS - ShelbyExtendedWeather
-    // ============================================================
+
     // --- Time & calendar ---
     static const char* fWeatherHourBetween  = "IsGameHourBetween";
     static const char* fWeatherGameHour     = "GetCurrentGameHour";
@@ -46,6 +43,10 @@ namespace EventNames {
     // --- Weather ---
     static const char* fWeatherWindSpeed    = "GetWindSpeed";
     static const char* fWeatherWindAngle    = "GetWindAngle";
+    static const char* fGetWeatherEditorID  = "GetWeatherEditorID";
+
+    // --- System ---
+    static const char* fDoesPluginExist = "DoesPluginExist";
 
     // ============================================================
     //  EVENTS - PLAYER (registered with Quest only)
@@ -77,6 +78,10 @@ namespace EventNames {
     static const char* kRegisterPlayerWWFeeding     = "RegisterWerewolfFeeding";
     static const char* kUnregisterPlayerWWFeeding   = "UnregisterWerewolfFeeding";
 
+    // --- Harvested plant ---
+    static const char* kPlayerHarvestedPlantEventName = "OnPlayerHarvestedPlant";
+    static const char* kRegisterHarvestedPlantName    = "RegisterHarvestedPlant";
+    static const char* kUnregisterHarvestedPlantName  = "UnregisterHarvestedPlant";
     // ============================================================
     //  EVENTS - ACTOR (registered with Quest + Actor, None = any actor)
     // ============================================================
@@ -94,4 +99,12 @@ namespace EventNames {
     static const char* kActorRaceSwitchEventName = "OnActorRaceSwitch";
     static const char* kRegisterRaceSwitchName   = "RegisterActorRaceSwitch";
     static const char* kUnregisterRaceSwitchName = "UnregisterActorRaceSwitch";
+
+    // ============================================================
+    //  EVENTS - WEATHER (registered with Quest)
+    // ============================================================
+    // --- Weather Change ---
+    static constexpr auto kWeatherChangedEventName     = "OnWeatherChanged";
+    static constexpr auto kRegisterWeatherChangedName   = "RegisterWeatherChanged";
+    static constexpr auto kUnregisterWeatherChangedName = "UnregisterWeatherChanged";
 }

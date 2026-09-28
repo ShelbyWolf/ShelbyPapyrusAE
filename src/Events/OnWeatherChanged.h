@@ -1,16 +1,8 @@
-//
-// Created by toms3 on 2026-09-27.
-//
+#pragma once
 
-#ifndef SHELBYPAPYRUSAE_ONWEATHERCHANGED_H
-#define SHELBYPAPYRUSAE_ONWEATHERCHANGED_H
-
-
-
-class OnWeatherChanged {
-
-};
-
-
-
-#endif //SHELBYPAPYRUSAE_ONWEATHERCHANGED_H
+namespace OnWeatherChanged {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+    void RegisterEvents();
+    void InstallEarly();
+    void Reset();
+}

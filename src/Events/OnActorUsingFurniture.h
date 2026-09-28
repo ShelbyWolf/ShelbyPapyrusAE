@@ -1,16 +1,7 @@
-//
-// Created by toms3 on 2026-09-25.
-//
+#pragma once
+#include "PCH.h"
 
-#ifndef SHELBYPAPYRUSAE_ONACTORUSINGFURNITURE_H
-#define SHELBYPAPYRUSAE_ONACTORUSINGFURNITURE_H
-
-
-
-class OnActorUsingFurniture {
-
-};
-
-
-
-#endif //SHELBYPAPYRUSAE_ONACTORUSINGFURNITURE_H
+namespace OnActorUsingFurniture {
+    void Register(RE::BSScript::IVirtualMachine* a_vm);
+    void RegisterEvents();
+}
