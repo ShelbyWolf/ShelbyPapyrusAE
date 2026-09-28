@@ -1,0 +1,16 @@
+//
+// Created by toms3 on 2026-09-23.
+//
+
+#ifndef SHELBYPAPYRUSEXTENDED_ACTORPLUS_H
+#define SHELBYPAPYRUSEXTENDED_ACTORPLUS_H
+
+
+
+class ActorPlus {
+
+};
+
+
+
+#endif //SHELBYPAPYRUSEXTENDED_ACTORPLUS_H

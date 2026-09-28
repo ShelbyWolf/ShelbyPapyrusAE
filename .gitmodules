@@ -1,0 +1,11 @@
+[submodule "lib/commonlibsse-ng"]
+	path = lib/commonlibsse-ng
+	url = https://github.com/alandtse/CommonLibSSE-NG.git
+	branch = ng
+[submodule "lib/CommonLibSSE"]
+	path = lib/CommonLibSSE
+	url = https://github.com/powerof3/CommonLibSSE.git
+	branch = origin
+[submodule "CommonLibSSE"]
+	path = CommonLibSSE
+	url = https://github.com/powerof3/CommonLibSSE.git

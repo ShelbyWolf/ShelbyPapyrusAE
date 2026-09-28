@@ -1,0 +1,16 @@
+//
+// Created by toms3 on 2026-09-27.
+//
+
+#ifndef SHELBYPAPYRUSAE_ONACTORRACESWITCHED_H
+#define SHELBYPAPYRUSAE_ONACTORRACESWITCHED_H
+
+
+
+class OnActorRaceSwitched {
+
+};
+
+
+
+#endif //SHELBYPAPYRUSAE_ONACTORRACESWITCHED_H

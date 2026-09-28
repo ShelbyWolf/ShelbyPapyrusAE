@@ -1,0 +1,13 @@
+//
+// Created by toms3 on 2026-09-26.
+//
+
+#ifndef SHELBYPAPYRUSAE_ONBLEEDOUTTRACKER_H
+#define SHELBYPAPYRUSAE_ONBLEEDOUTTRACKER_H
+
+
+class OnActorBleedout {
+};
+
+
+#endif //SHELBYPAPYRUSAE_ONBLEEDOUTTRACKER_H

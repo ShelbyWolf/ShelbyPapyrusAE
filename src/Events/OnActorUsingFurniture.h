@@ -1,0 +1,16 @@
+//
+// Created by toms3 on 2026-09-25.
+//
+
+#ifndef SHELBYPAPYRUSAE_ONACTORUSINGFURNITURE_H
+#define SHELBYPAPYRUSAE_ONACTORUSINGFURNITURE_H
+
+
+
+class OnActorUsingFurniture {
+
+};
+
+
+
+#endif //SHELBYPAPYRUSAE_ONACTORUSINGFURNITURE_H
