@@ -48,9 +48,8 @@ namespace PapyrusNames {
     // --- System ---
     static const char* fDoesPluginExist = "DoesPluginExist";
 
-    // ============================================================
     //  EVENTS - PLAYER (registered with Quest only)
-    // ============================================================
+
     // --- Attack (one registration, three events) ---
     static const char* kAttackRegistryName         = "AttackEvents";
     static const char* kPlayerAttackEventName      = "OnPlayerAttack";
@@ -82,9 +81,9 @@ namespace PapyrusNames {
     static const char* kPlayerHarvestedPlantEventName = "OnPlayerHarvestedPlant";
     static const char* kRegisterHarvestedPlantName    = "RegisterHarvestedPlant";
     static const char* kUnregisterHarvestedPlantName  = "UnregisterHarvestedPlant";
-    // ============================================================
+
     //  EVENTS - ACTOR (registered with Quest + Actor, None = any actor)
-    // ============================================================
+
     // --- Bleedout ---
     static const char* kBleedoutEventName      = "OnActorBleedout";
     static const char* kRegisterBleedoutName   = "RegisterActorBleedout";
@@ -100,9 +99,8 @@ namespace PapyrusNames {
     static const char* kRegisterRaceSwitchName   = "RegisterActorRaceSwitch";
     static const char* kUnregisterRaceSwitchName = "UnregisterActorRaceSwitch";
 
-    // ============================================================
     //  EVENTS - WEATHER (registered with Quest)
-    // ============================================================
+
     // --- Weather Change ---
     static constexpr auto kWeatherChangedEventName     = "OnWeatherChanged";
     static constexpr auto kRegisterWeatherChangedName   = "RegisterWeatherChanged";
