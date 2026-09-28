@@ -1,4 +1,5 @@
-This is a library built upon CommonLibSSE from Alandtse, Which means its currently under GPL-3.0 or Later, Please refer to the COPYING.txt and NOTICE.txt
+This library is built on CommonLibSSE-NG (by alandtse), and is therefore licensed under GPL-3.0-or-later.
+See COPYING.txt and NOTICE.txt for details.
 
 ShelbyPapyrusAE
 Copyright (C) 2026 ShelbyWolf
