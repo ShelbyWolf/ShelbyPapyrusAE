@@ -1,9 +1,10 @@
 #pragma once
+#include "ActorPlus.h"
+
 #include "PCH.h"
 #include "Events/PapyrusNames.h"
 
 // TODO / Future Function Ideas
-
 
 // IsActorInCombatWith(Actor, Actor)     - Check if two specific actors are in combat with each other
 // GetDaysSinceLastSleep()               - Days since player last slept, cleaner than GetTimeSinceLastRest() / 24
@@ -17,39 +18,24 @@
 
 namespace ActorPlus {
 
-    void ForActorEachInventoryItems(RE::Actor* a_actor, std::function<void(RE::TESBoundObject*, std::int32_t, RE::InventoryEntryData*)> a_func) {
-        if (!a_actor) return;
-        auto inventory = a_actor->GetInventory();
-        for (auto& [item, data] : inventory) {
-            if (!item) continue;
-            const auto& [count, entry] = data;
-            a_func(item, count, entry.get());
-        }
-    }
-
-    RE::TESNPC* GetActorBase(RE::Actor* a_actor) {
-        if (!a_actor) return nullptr;
-        return a_actor->GetActorBase();
-    }
-
-    // Returns true only if the actor is non-null and alive.
-    // Do not use for functions that operate on dead actors.
-    bool IsActorAlive(RE::Actor* a_actor) {
-        return a_actor && !a_actor->IsDead();
-    }
-
-    bool IsActorAttacking(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+    bool IsAttacking(RE::Actor* a_actor) {
         if (!IsActorAlive(a_actor)) return false;
         return a_actor->IsAttacking();
     }
-
-    bool IsActorWerewolf(const RE::Actor* a_this) {
-        if (!a_this) return false;
-        static auto* werewolfRace = RE::TESForm::LookupByEditorID<RE::TESRace>("WerewolfBeastRace");
-        return werewolfRace && a_this->GetRace() == werewolfRace;
+    bool IsActorAttacking(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsAttacking(a_actor);
     }
 
-    bool IsActorPowerAttacking(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+    bool IsWerewolf(RE::Actor* a_actor) {
+        if (!a_actor) return false;
+        static auto* werewolfRace = RE::TESForm::LookupByEditorID<RE::TESRace>("WerewolfBeastRace");
+        return werewolfRace && a_actor->GetRace() == werewolfRace;
+    }
+    bool IsActorWerewolf(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsWerewolf(a_actor);
+    }
+
+    bool IsPowerAttacking(RE::Actor* a_actor) {
         if (!IsActorAlive(a_actor) || !a_actor->IsAttacking()) return false;
 
         auto* process = a_actor->GetActorRuntimeData().currentProcess;
@@ -58,8 +44,11 @@ namespace ActorPlus {
         auto& attackData = process->high->attackData;
         return attackData && attackData->data.flags.all(RE::AttackData::AttackFlag::kPowerAttack);
     }
+    bool IsActorPowerAttacking(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsPowerAttacking(a_actor);
+    }
 
-    bool IsActorDualWielding(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+    bool IsDualWielding(RE::Actor* a_actor) {
         if (!a_actor) return false;
         auto* rightHand = a_actor->GetEquippedObject(false);
         auto* leftHand = a_actor->GetEquippedObject(true);
@@ -85,26 +74,54 @@ namespace ActorPlus {
 
         return !isTwoHanded(rightType) && !isTwoHanded(leftType) && rightWeapon != leftWeapon;
     }
+    bool IsActorDualWielding(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsDualWielding(a_actor);
+    }
 
-    bool IsActorFemale(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+    bool IsFemale(RE::Actor* a_actor) {
         if (!a_actor) return false;
-        auto* Base = GetActorBase(a_actor);
+        auto* Base = ActorPlus::GetActorBase(a_actor);
         if (!Base) return false;
         bool female = Base->GetSex();
         if (!female) return false;
         return female;
     }
+    bool IsActorFemale(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsFemale(a_actor);
+    }
 
-    bool IsActorInExterior(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+    bool IsInExterior(RE::Actor* a_actor) {
         if (!a_actor) return false;
         auto* cell = a_actor->GetParentCell();
         if (!cell) return false;
         return !cell->IsInteriorCell();
     }
+    bool IsActorInExterior(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsInExterior(a_actor);
+    }
 
-    bool IsActorUsingFurniture(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+    bool IsUsingFurniture(RE::Actor* a_actor) {
         if (!a_actor) return false;
         return a_actor->GetOccupiedFurniture().native_handle() != 0;
+    }
+    bool IsActorUsingFurniture(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsUsingFurniture(a_actor);
+    }
+
+    bool IsStaggered(RE::Actor* a_actor) {
+        if (!a_actor) return false;
+        return a_actor->AsActorState()->actorState2.staggered;
+    }
+    bool IsActorStaggered(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsStaggered(a_actor);
+    }
+
+    bool IsHeadtracking(RE::Actor* a_actor) {
+        if (!a_actor) return false;
+        return a_actor->AsActorState()->actorState2.headTracking;
+    }
+    bool IsActorHeadtracking(RE::StaticFunctionTag*, RE::Actor* a_actor) {
+        return IsHeadtracking(a_actor);
     }
 
     int GetActorEquippedWeaponType(RE::StaticFunctionTag*, RE::Actor* a_actor) {
@@ -143,14 +160,10 @@ namespace ActorPlus {
         return totalValue;
     }
 
-    bool IsWerewolf(RE::StaticFunctionTag*, RE::Actor* a_actor) {
-        return IsActorWerewolf(a_actor);
-    }
-
     void Register(RE::BSScript::IVirtualMachine* a_vm) {
 
         a_vm->RegisterFunction(PapyrusNames::fActorFemale, PapyrusNames::PapyrusActorScript, IsActorFemale);
-        a_vm->RegisterFunction(PapyrusNames::fActorWerewolf, PapyrusNames::PapyrusActorScript, IsWerewolf);
+        a_vm->RegisterFunction(PapyrusNames::fActorWerewolf, PapyrusNames::PapyrusActorScript, IsActorWerewolf);
         a_vm->RegisterFunction(PapyrusNames::fActorFurniture, PapyrusNames::PapyrusActorScript, IsActorUsingFurniture);
         a_vm->RegisterFunction(PapyrusNames::fActorAttacking, PapyrusNames::PapyrusActorScript, IsActorAttacking);
         a_vm->RegisterFunction(PapyrusNames::fActorPowerAttacking, PapyrusNames::PapyrusActorScript, IsActorPowerAttacking);

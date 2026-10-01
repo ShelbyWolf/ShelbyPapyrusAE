@@ -4,18 +4,19 @@
 #include <filesystem>
 
 namespace SystemPlus {
-    namespace {
-        bool DoesPluginExist(RE::StaticFunctionTag*, RE::BSFixedString a_dllName) {
-            if (a_dllName.empty()) return false;
+    bool DoesExist(std::string dllName) {
+        if (dllName.empty()) return false;
 
-            std::string name = a_dllName.c_str();
-            if (!name.ends_with(".dll") && !name.ends_with(".DLL")) {
-                name += ".dll";
-            }
-
-            std::error_code ec;
-            return std::filesystem::exists(std::filesystem::path("Data/SKSE/Plugins") / name, ec);
+        if (!dllName.ends_with(".dll") && !dllName.ends_with(".DLL")) {
+            dllName += ".dll";
         }
+
+        std::error_code ec;
+        return std::filesystem::exists(std::filesystem::path("Data/SKSE/Plugins") / dllName, ec);
+    }
+
+    bool DoesPluginExist(RE::StaticFunctionTag*, RE::BSFixedString a_dllName) {
+        return DoesExist(a_dllName.c_str());
     }
 
     void Register(RE::BSScript::IVirtualMachine* a_vm) {
