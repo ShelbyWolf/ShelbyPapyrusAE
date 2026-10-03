@@ -89,6 +89,16 @@ Function UnregisterActorRaceSwitch(Quest akQuest, Actor akActor) Global Native
 Function RegisterActorFurnitureUsed(Quest akQuest, Actor akActor) Global Native
 Function UnregisterActorFurnitureUsed(Quest akQuest, Actor akActor) Global Native
 
+;/ Actor Dialogue
+   Registers the quest to receive dialogue events when the player talks to an actor.
+   akActor = None listens to any actor.
+
+   Event OnActorDialogueStarted(Actor akSpeaker)
+   Event OnActorDialogueEnded(Actor akSpeaker)
+/;
+Function RegisterActorDialogue(Quest akQuest, Actor akActor) global native
+Function UnregisterActorDialogue(Quest akQuest, Actor akActor) global native
+
 ;/
     Registers akQuest to receive the player lockpicking events:
     Event OnPlayerLockpickSuccess(ObjectReference akLock)  - lockpicking menu closed, lock is open

@@ -84,6 +84,13 @@ namespace PapyrusNames {
 
     //  EVENTS - ACTOR (registered with Quest + Actor, None = any actor)
 
+    // --- Dialogue ---
+    static const char* kDialogueRegistryName = "DialogueEvents";
+    static const char* kDialogueEventName = "OnActorDialogueStarted";
+    static const char* kDialogueEndEventName = "OnActorDialogueEnded";
+    static const char* kRegisterDialogueName = "RegisterActorDialogue";
+    static const char* kUnregisterDialogueName = "UnregisterActorDialogue";
+
     // --- Bleedout ---
     static const char* kBleedoutEventName      = "OnActorBleedout";
     static const char* kRegisterBleedoutName   = "RegisterActorBleedout";

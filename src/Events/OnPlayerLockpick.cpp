@@ -1,6 +1,6 @@
 #include "OnPlayerLockpick.h"
-#include "PapyrusNames.h"
-#include "EventRegistry.h"
+#include "Include/PapyrusNames.h"
+#include "../Include/EventRegistry.h"
 
 #include <atomic>
 #include <mutex>

@@ -1,6 +1,6 @@
 #pragma once
-#include "PCH.h"
-#include "Events/PapyrusNames.h"
+#include "Include/PCH.h"
+#include "Include/PapyrusNames.h"
 
 namespace WeatherPlus {
     float GetGameHour() {
@@ -33,25 +33,25 @@ namespace WeatherPlus {
     RE::BSFixedString GetCurrentDayName(RE::StaticFunctionTag*) {
         auto* calendar = RE::Calendar::GetSingleton();
         if (!calendar) return "";
-        return RE::BSFixedString(calendar->GetDayName().c_str());
+        return {calendar->GetDayName().c_str()};
     }
 
     RE::BSFixedString GetCurrentMonthName(RE::StaticFunctionTag*) {
         auto* calendar = RE::Calendar::GetSingleton();
         if (!calendar) return "";
-        return RE::BSFixedString(calendar->GetMonthName().c_str());
+        return {calendar->GetMonthName().c_str()};
     }
 
     float GetWindAngle(RE::StaticFunctionTag*) {
         auto* weather = GetExteriorWeather();
         if (!weather) return 0.0f;
-        return static_cast<std::uint8_t>(weather->data.windDirection) / 256.0f * 360.0f;
+        return static_cast<float>(weather->data.windDirection) / 256.0f * 360.0f;
     }
 
     float GetWindSpeed(RE::StaticFunctionTag*) {
         auto* weather = GetExteriorWeather();
         if (!weather) return 0.0f;
-        return static_cast<std::uint8_t>(weather->data.windSpeed) / 255.0f;
+        return static_cast<float>(weather->data.windSpeed) / 255.0f;
     }
 
     int GetMoonPhaseInt(RE::StaticFunctionTag*) {

@@ -1,5 +1,5 @@
 #pragma once
-#include "PCH.h"
+#include "../Include/PCH.h"
 
 namespace OnPlayerHarvestedPlant {
     void Register(RE::BSScript::IVirtualMachine* a_vm);

@@ -1,5 +1,5 @@
 #include "SystemPlus.h"
-#include "Events/PapyrusNames.h"
+#include "Include/PapyrusNames.h"
 
 #include <filesystem>
 

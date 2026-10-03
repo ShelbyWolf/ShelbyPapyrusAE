@@ -1,8 +1,8 @@
 #include "OnPlayerWerewolfFeeding.h"
 
 #include "ActorPlus.h"
-#include "PapyrusNames.h"
-#include "EventRegistry.h"
+#include "Include/PapyrusNames.h"
+#include "../Include/EventRegistry.h"
 
 namespace OnPlayerWerewolfFeeding {
     namespace {
@@ -21,7 +21,7 @@ namespace OnPlayerWerewolfFeeding {
                 }
 
                 auto* player = RE::PlayerCharacter::GetSingleton();
-                if (a_event->caster.get() != player || !ActorPlus::IsActorWerewolf(player)) {
+                if (a_event->caster.get() != player || !ActorPlus::IsWerewolf(player) || !ActorPlus::IsActorAlive(player)) {
                     return RE::BSEventNotifyControl::kContinue;
                 }
 

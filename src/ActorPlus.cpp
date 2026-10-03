@@ -1,8 +1,8 @@
 #pragma once
 #include "ActorPlus.h"
 
-#include "PCH.h"
-#include "Events/PapyrusNames.h"
+#include "Include/PCH.h"
+#include "Include/PapyrusNames.h"
 
 // TODO / Future Function Ideas
 

@@ -1,16 +1,17 @@
-#include "src/PCH.h"
+#include "src/Include/PCH.h"
 #include "src/ActorPlus.h"
 #include "src/WeatherPlus.h"
 #include "src/SystemPlus.h"
 #include "Events/OnActorUsingFurniture.h"
 #include "Events/OnPlayerAttack.h"
-#include "Serialization.h"
+#include "src/Include/Serialization.h"
 #include "Events/OnActorBleedout.h"
 #include "Events/OnPlayerLockpick.h"
 #include "Events/OnActorRaceSwitched.h"
 #include "Events/OnPlayerWerewolfFeeding.h"
 #include "Events/OnPlayerHarvestedPlant.h"
 #include "Events/OnWeatherChanged.h"
+#include "Events/OnActorDialogue.h"
 #include "Version.h"
 
 extern "C" __declspec(dllexport) constinit auto SKSEPlugin_Version = []() {
@@ -42,6 +43,7 @@ bool RegisterFunctions(RE::BSScript::IVirtualMachine* a_vm) {
     OnPlayerWerewolfFeeding::Register(a_vm);
     OnPlayerHarvestedPlant::Register(a_vm);
     OnWeatherChanged::Register(a_vm);
+    OnActorDialogue::Register(a_vm);
     return true;
 }
 
@@ -65,14 +67,15 @@ extern "C" __declspec(dllexport) bool SKSEPlugin_Load(const SKSE::LoadInterface*
     SKSE::GetMessagingInterface()->RegisterListener([](SKSE::MessagingInterface::Message* a_msg) {
         switch (a_msg->type) {
         case SKSE::MessagingInterface::kDataLoaded:
-            OnActorAttack::RegisterEvents();
-            OnActorBleedout::RegisterEvents();
-            OnActorUsingFurniture::RegisterEvents();
-            OnPlayerLockpick::RegisterEvents();
-            OnPlayerWerewolfFeeding::RegisterEvents();
-            OnActorRaceSwitched::RegisterEvents();
-            OnPlayerHarvestedPlant::RegisterEvents();
-            OnWeatherChanged::RegisterEvents();
+                OnActorAttack::RegisterEvents();
+                OnActorBleedout::RegisterEvents();
+                OnActorUsingFurniture::RegisterEvents();
+                OnPlayerLockpick::RegisterEvents();
+                OnPlayerWerewolfFeeding::RegisterEvents();
+                OnActorRaceSwitched::RegisterEvents();
+                OnPlayerHarvestedPlant::RegisterEvents();
+                OnWeatherChanged::RegisterEvents();
+                OnActorDialogue::RegisterEvents();
             break;
         case SKSE::MessagingInterface::kPostLoadGame:
         case SKSE::MessagingInterface::kNewGame:

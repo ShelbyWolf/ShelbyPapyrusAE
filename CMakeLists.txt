@@ -35,7 +35,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE SKYRIM_SUPPORT_AE=1)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog fmt::fmt nlohmann_json::nlohmann_json)
 target_link_libraries(${PROJECT_NAME} PUBLIC CommonLibSSE::CommonLibSSE)
-target_precompile_headers(${PROJECT_NAME} PRIVATE "src/PCH.h")
+target_precompile_headers(${PROJECT_NAME} PRIVATE "src/Include/PCH.h")
 
 set(MOD_PLUGINS_DIR "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/Data/SKSE/Plugins")
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

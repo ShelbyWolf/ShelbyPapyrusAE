@@ -1,6 +1,6 @@
 #include "OnWeatherChanged.h"
-#include "EventRegistry.h"
-#include "PapyrusNames.h"
+#include "../Include/EventRegistry.h"
+#include "../Include/PapyrusNames.h"
 
 namespace OnWeatherChanged {
 
@@ -68,6 +68,6 @@ namespace OnWeatherChanged {
         REL::Relocation<std::uintptr_t> vtbl{ RE::VTABLE_PlayerCharacter[0] };
         PlayerUpdateHook::func = vtbl.write_vfunc(0xAD, PlayerUpdateHook::thunk);
         if (weatherEditorIDs.empty())
-            SKSE::log::warn("OnWeatherChanged: no weather editor IDs cached, GetWeatherEditorID will rely on po3 Tweaks");
+            SKSE::log::warn("OnWeatherChanged: no weather editor IDs cached");
     }
 }

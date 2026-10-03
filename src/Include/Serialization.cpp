@@ -1,5 +1,5 @@
-#include "Serialization.h"
-#include "Events/EventRegistry.h"
+#include "../Include/Serialization.h"
+#include "EventRegistry.h"
 
 namespace Serialization {
     namespace {
